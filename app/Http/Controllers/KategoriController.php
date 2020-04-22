@@ -27,7 +27,7 @@ class KategoriController extends Controller
     public function show($id)
     {
         $kategori = Kategori::find($id);
-        
+
         return $kategori;
     }
 
@@ -72,7 +72,6 @@ class KategoriController extends Controller
 
         $dataUpdate = Kategori::find($id);
         
-        ;
         if ( $dataUpdate->update($req) ) {
             $return = [
                 "message" => "Successfully update data with id : ".$dataUpdate->id,
@@ -81,6 +80,23 @@ class KategoriController extends Controller
         } else {
             $return = [
                 "message" => "Vailed updated data.",
+                "code"   => 404,
+            ];
+        }
+
+        return $return;
+    }
+
+    public function destroy($id)
+    {
+        if ( Kategori::destroy($id) ) {
+            $return = [
+                "message" => "Data successfully removed",
+                "code"    => 201,
+            ];
+        } else {
+            $return = [
+                "message" => "Vailed remove data.",
                 "code"   => 404,
             ];
         }
