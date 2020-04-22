@@ -52,5 +52,34 @@ class KategoriController extends Controller
         return $return;
     }
 
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'nama'        => 'required',
+            'deskripsi'   => 'required',
+            'warna'       => 'required',
+            'status'      => 'required|boolean',
+        ]);
+
+        $req = $request->all();
+
+        $dataUpdate = Kategori::find($id);
+        
+        ;
+        if ( $dataUpdate->update($req) ) {
+            $return = [
+                "message" => "Successfully update data with id : ".$dataUpdate->id,
+                "code"    => 201,
+            ];
+        } else {
+            $return = [
+                "message" => "Vailed updated data.",
+                "code"   => 404,
+            ];
+        }
+
+        return $return;
+    }
+
 
 }

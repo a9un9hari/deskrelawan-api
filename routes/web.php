@@ -22,4 +22,5 @@ $router->group(['middleware' => 'auth'], function () use ($router) {
     // Kategori
     $router->get('/kategori', 'KategoriController@index');
     $router->post('/kategori', 'KategoriController@store');
+    $router->put('/kategori/{id}', 'KategoriController@update');
 });
