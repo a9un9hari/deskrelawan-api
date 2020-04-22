@@ -69,21 +69,29 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $this->validate($request, [
-            'email' => 'required|unique:users|max:255',
-            'password' => 'required|min:6'
+            'email'     => 'required|unique:users|max:255',
+            'password'  => 'required|min:6',
+            'name'      => 'required',
+            'role'      => 'required',
+            'status'    => 'required'
         ]);
-        $email = $request->input("email");
-        $password = $request->input("password");
+        $email      = $request->input("email");
+        $password   = $request->input("password");
+        $name       = $request->input("name");
+        $role       = $request->input("role");
+        $status     = $request->input("status");
 
         $hashPwd = Hash::make($password);
 
         $data = [
-            "email" => $email,
-            "password" => $hashPwd
+            "email"     => $email,
+            "password"  => $hashPwd,
+            'name'      => $name,
+            'role'      => $role,
+            'status'    => $status
         ];
 
-
-        if (User::create($data)) {
+        if ( User::create($data) ) {
             $out = [
                 "message" => "register_success",
                 "code"    => 201,
