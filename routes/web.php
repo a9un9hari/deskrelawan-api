@@ -18,10 +18,8 @@ $router->post("/login", "AuthController@login");
 $router->group(['middleware' => 'auth'], function () use ($router) {
     // User
     $router->get("/user", "UserController@index");
+
+    // Kategori
+    $router->get('/kategori', 'KategoriController@index');
+    $router->post('/kategori', 'KategoriController@store');
 });
-
-// $router->get('/user', ['middleware' => 'auth', function (Request $request) {
-//     $user = Auth::user();
-
-//     return $user;
-// }]);
