@@ -24,6 +24,13 @@ class KategoriController extends Controller
         return $kategori;
     }
 
+    public function show($id)
+    {
+        $kategori = Kategori::find($id);
+        
+        return $kategori;
+    }
+
     public function store(Request $request)
     {
         $this->validate($request, [
