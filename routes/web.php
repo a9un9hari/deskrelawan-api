@@ -25,4 +25,11 @@ $router->group(['middleware' => 'auth'], function () use ($router) {
     $router->post('/kategori', 'KategoriController@store');
     $router->put('/kategori/{id}', 'KategoriController@update');
     $router->delete('/kategori/{id}', 'KategoriController@destroy');
+
+    // Aksi
+    $router->get('/aksi', 'AksiController@index');
+    $router->get('/aksi/{id}', 'AksiController@show');
+    $router->post('/aksi', 'AksiController@store');
+    $router->put('/aksi/{id}', 'AksiController@update');
+    $router->delete('/aksi/{id}', 'AksiController@destroy');
 });
