@@ -17,6 +17,7 @@ class CorsMiddleware
     {
         $allowedDomains = [
             'http://localhost:8080',
+            'http://localhost:8081'
         ];
 
         $curUrl = ( ! empty($_SERVER['HTTP_ORIGIN']) ) ? $_SERVER['HTTP_ORIGIN'] : '';
@@ -30,7 +31,7 @@ class CorsMiddleware
        //RULE HEADERSNYA HARUS KITA SET SECARA SPESIFIK SEPERTI INI 
         $headers = [
             'Access-Control-Allow-Origin'      => $domainApproved,
-            'Access-Control-Allow-Methods'     => 'GET', //'POST, GET, OPTIONS, PUT, DELETE'
+            'Access-Control-Allow-Methods'     => 'POST, GET, OPTIONS, PUT, DELETE', //'POST, GET, OPTIONS, PUT, DELETE'
             'Access-Control-Allow-Credentials' => 'true',
             'Access-Control-Max-Age'           => '86400',
             'Access-Control-Allow-Headers'     => 'Content-Type, Authorization, X-Requested-With'
