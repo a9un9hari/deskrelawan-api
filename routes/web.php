@@ -12,6 +12,9 @@
 */
 
 // Auth
+$router->get("/test", function(){
+    return 'as';
+});
 $router->post("/register", "AuthController@register");
 $router->post("/login", "AuthController@login");
 
